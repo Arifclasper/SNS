@@ -1,0 +1,377 @@
+@import "tailwindcss";
+
+/* ============================================================
+   SNS COLLECTION — DESIGN TOKENS
+   Edit only this block to rebrand the entire application.
+   ============================================================ */
+@theme {
+  --color-brand: #c22f68;
+  --color-brand-hover: #a82458;
+  --color-brand-soft: #fde7f0;
+  --color-brand-ink: #4a1730;
+  --color-accent: #3d6fd6;
+  --color-accent-hover: #2f5fc4;
+  --color-accent-soft: #e8f0ff;
+  --color-accent-ink: #1d3f8f;
+
+  --color-ink: #2b1622;
+  --color-ink-soft: #5c3a4a;
+  --color-muted: #7b5b6b;
+
+  --color-surface: #fffdfd;
+  --color-raised: #fff6fa;
+  --color-sunken: #fbebf3;
+
+  --color-line: #f3dce7;
+  --color-line-strong: #e7c3d5;
+
+  --color-success: #15803d;
+  --color-success-soft: #dcfce7;
+  --color-warning: #b45309;
+  --color-warning-soft: #fef3c7;
+  --color-danger: #b91c1c;
+  --color-danger-soft: #fee2e2;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-script: "Great Vibes", "Segoe Script", cursive;
+  --font-brand-serif: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-line);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-surface);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    letter-spacing: -0.02em;
+    font-weight: 600;
+  }
+
+  ::selection {
+    background: var(--color-brand-soft);
+    color: var(--color-brand-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+  }
+
+  input,
+  select,
+  textarea,
+  button {
+    font: inherit;
+  }
+}
+
+@layer components {
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    height: 40px;
+    padding-inline: 1.1rem;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    transition:
+      background-color 0.15s ease,
+      background-image 0.15s ease,
+      border-color 0.15s ease,
+      color 0.15s ease,
+      box-shadow 0.15s ease,
+      transform 0.15s ease;
+    cursor: pointer;
+    border: 1px solid transparent;
+  }
+
+  .btn:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+
+  .btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .btn-primary {
+    background-image: linear-gradient(135deg, #d34079 0%, var(--color-brand) 58%, #ad2359 100%);
+    color: #fff;
+    box-shadow: 0 10px 24px -14px rgb(194 47 104 / 0.7);
+  }
+
+  .btn-primary:hover:not(:disabled) {
+    background-image: linear-gradient(135deg, #d64b83 0%, var(--color-brand-hover) 60%, #941d4b 100%);
+    box-shadow: 0 12px 28px -14px rgb(194 47 104 / 0.8);
+  }
+
+  .btn-secondary {
+    background-color: #fff;
+    border-color: var(--color-line-strong);
+    color: var(--color-brand-ink);
+  }
+
+  .btn-secondary:hover:not(:disabled) {
+    background-color: var(--color-raised);
+    border-color: var(--color-brand);
+  }
+
+  .btn-ghost {
+    background-color: transparent;
+    color: var(--color-ink-soft);
+  }
+
+  .btn-ghost:hover:not(:disabled) {
+    background-color: var(--color-sunken);
+    color: var(--color-brand-ink);
+  }
+
+  .btn-danger {
+    background-color: var(--color-danger);
+    color: #fff;
+  }
+
+  .btn-danger:hover:not(:disabled) {
+    background-color: #991b1b;
+  }
+
+  .btn-sm {
+    height: 32px;
+    padding-inline: 0.7rem;
+    font-size: 12px;
+  }
+
+  .btn-lg {
+    height: 48px;
+    padding-inline: 1.5rem;
+    font-size: 14px;
+  }
+
+  .input {
+    display: block;
+    width: 100%;
+    height: 40px;
+    padding-inline: 0.85rem;
+    border: 1px solid var(--color-line-strong);
+    border-radius: var(--radius-sm);
+    background: #fff;
+    color: var(--color-ink);
+    font-size: 14px;
+    transition:
+      border-color 0.15s ease,
+      box-shadow 0.15s ease;
+  }
+
+  .input::placeholder {
+    color: var(--color-muted);
+  }
+
+  .input:focus {
+    outline: none;
+    border-color: var(--color-brand);
+    box-shadow: 0 0 0 3px rgb(194 47 104 / 0.14);
+  }
+
+  .input[aria-invalid="true"] {
+    border-color: var(--color-danger);
+  }
+
+  textarea.input {
+    height: auto;
+    padding-block: 0.6rem;
+    resize: vertical;
+  }
+
+  .label {
+    display: block;
+    margin-bottom: 0.375rem;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-ink-soft);
+  }
+
+  .card {
+    background: #fff;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-md);
+    box-shadow: 0 18px 40px -34px rgb(92 58 74 / 0.4);
+  }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    border-radius: 999px;
+    padding: 0.15rem 0.55rem;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.5;
+    white-space: nowrap;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  .data-table thead th {
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    background: var(--color-raised);
+    border-bottom: 1px solid var(--color-line);
+    white-space: nowrap;
+  }
+
+  .data-table tbody td {
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--color-line);
+    vertical-align: middle;
+  }
+
+  .data-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .data-table tbody tr:hover {
+    background: var(--color-raised);
+  }
+
+  .link-underline {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
+  .announcement-bar {
+    background-image: linear-gradient(90deg, #c22f68 0%, #9d5bd2 52%, #3d6fd6 100%);
+    color: #fff;
+  }
+
+  .watercolor-band {
+    background-color: var(--color-surface);
+    background-image:
+      radial-gradient(circle at 18% 24%, rgb(194 47 104 / 0.16) 0 2px, transparent 2.8px),
+      radial-gradient(circle at 27% 13%, rgb(61 111 214 / 0.14) 0 1.6px, transparent 2.4px),
+      radial-gradient(circle at 11% 42%, rgb(157 91 210 / 0.14) 0 2px, transparent 2.8px),
+      radial-gradient(circle at 88% 31%, rgb(194 47 104 / 0.12) 0 1.8px, transparent 2.6px),
+      radial-gradient(circle at 76% 16%, rgb(61 111 214 / 0.12) 0 2.2px, transparent 3px),
+      radial-gradient(58rem 30rem at 6% -12%, rgb(251 207 232 / 0.85), transparent 62%),
+      radial-gradient(46rem 26rem at 52% -18%, rgb(233 213 255 / 0.6), transparent 64%),
+      radial-gradient(52rem 28rem at 98% 2%, rgb(219 234 254 / 0.85), transparent 60%);
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .splash-bg {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+  }
+
+  .splash-bg::before,
+  .splash-bg::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    border-radius: 999px;
+    filter: blur(64px);
+    pointer-events: none;
+  }
+
+  .splash-bg::before {
+    width: 38rem;
+    height: 38rem;
+    left: -14rem;
+    top: -16rem;
+    background: radial-gradient(circle, rgb(244 114 182 / 0.3), transparent 68%);
+  }
+
+  .splash-bg::after {
+    width: 34rem;
+    height: 34rem;
+    right: -12rem;
+    bottom: -18rem;
+    background: radial-gradient(circle, rgb(96 165 250 / 0.26), transparent 68%);
+  }
+
+  .splash-bg-dark::before {
+    background: radial-gradient(circle, rgb(236 72 153 / 0.22), transparent 68%);
+  }
+
+  .splash-bg-dark::after {
+    background: radial-gradient(circle, rgb(79 125 224 / 0.24), transparent 68%);
+  }
+
+  .font-script {
+    font-family: var(--font-script);
+  }
+
+  .font-brand-serif {
+    font-family: var(--font-brand-serif);
+  }
+
+  .animate-in {
+    animation: sns-fade-in 0.25s ease both;
+  }
+
+  @keyframes sns-fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
